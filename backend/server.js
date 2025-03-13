@@ -6,18 +6,13 @@ const cors = require("cors");
 // Create the Express app
 const app = express();
 
-const corsOptions = {
-  origin: 'https://coupon-claimfrontend.vercel.app',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true,
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  optionsSuccessStatus: 200 // For legacy browser support
-};
-
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
-
-
+app.use(cors(
+    {
+        origin: ["https://coupon-claimfrontend.vercel.app"],
+        methods: ["POST", "GET"],
+        credentials: true
+    }
+));
 
 // Middleware to parse JSON payloads and trust proxy headers
 app.use(express.json());
