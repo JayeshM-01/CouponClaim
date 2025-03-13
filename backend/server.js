@@ -7,10 +7,11 @@ const port = "https://coupon-claimbackend.vercel.app/"
 
 // Create the Express app
 const app = express();
-app.use(express.json());
+
+const port = "https://coupon-claimbackend.vercel.app"
 
 const corsOptions = {
-  origin: 'https://coupon-claimfrontend.vercel.app/',
+  origin: 'https://coupon-claimfrontend.vercel.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization'],
@@ -139,5 +140,5 @@ app.get('/check-time', async (req, res) => {
 
 // Start the Express server on port 3001
 app.listen(port, () => {
-  console.log('Server is running on port 3001');
+  console.log('Server is running on port');
 });
