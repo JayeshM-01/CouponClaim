@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 // Import required modules
 const express = require('express');
 const mongoose = require('mongoose');
@@ -21,7 +23,9 @@ app.options('*', cors(corsOptions));
 
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://jayashmore278:couponclaim@cluster0.7gysj.mongodb.net/ClaimCoupon?retryWrites=true&w=majority&appName=Cluster0', {
+console.log(process.env.MONGO_URI);
+
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -137,7 +141,7 @@ app.get('/check-time', async (req, res) => {
 });
 
 // Start the Express server on port 3001
-// app.listen(port, () => {
+// app.listen(3001, () => {
 //   console.log('Server is running on port');
 // });
 
