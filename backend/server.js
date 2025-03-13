@@ -6,7 +6,7 @@ const cors = require("cors");
 // Create the Express app
 const app = express();
 
-const port = "https://coupon-claimbackend.vercel.app/"
+const port = "https://coupon-claimbackend.vercel.app"
 
 const corsOptions = {
   origin: 'https://coupon-claimfrontend.vercel.app',
