@@ -6,13 +6,25 @@ const cors = require("cors");
 // Create the Express app
 const app = express();
 
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  optionsSuccessStatus: 200 // For legacy browser support
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
+
+
+
 // Middleware to parse JSON payloads and trust proxy headers
 app.use(express.json());
-app.use(cors());
 app.set('trust proxy', true);
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://jayashmore278:1G8K3exAiGuuih5s@cluster0.7gysj.mongodb.net/ClaimCoupon?retryWrites=true&w=majority&appName=Cluster0', {
+mongoose.connect('mongodb+srv://jayashmore278:couponclaim@cluster0.7gysj.mongodb.net/ClaimCoupon?retryWrites=true&w=majority&appName=Cluster0', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -45,6 +57,11 @@ const couponList = [
   "COUPON10"
 ];
 let nextCouponIndex = 0;
+
+app.get('/', async (req, res) => {
+  res.send("HO RAHA");
+ });
+ 
 
 // Define the coupon claim endpoint to record an IP, restrict claims within one hour, and assign a coupon round-robin
 app.post('/claim-coupon', async (req, res) => {
