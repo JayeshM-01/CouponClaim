@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require("cors");
 
-const port = "https://coupon-claimbackend.vercel.app/"
+// const port = "https://coupon-claimbackend.vercel.app/"
 
 // Create the Express app
 const app = express();
@@ -137,6 +137,11 @@ app.get('/check-time', async (req, res) => {
 });
 
 // Start the Express server on port 3001
-app.listen(port, () => {
-  console.log('Server is running on port');
-});
+// app.listen(port, () => {
+//   console.log('Server is running on port');
+// });
+
+
+
+module.exports = app;
+
