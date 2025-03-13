@@ -6,6 +6,8 @@ const cors = require("cors");
 // Create the Express app
 const app = express();
 
+const port = "https://coupon-claimbackend.vercel.app/"
+
 app.use(cors(
     {
         origin: ["https://coupon-claimfrontend.vercel.app"],
@@ -135,6 +137,6 @@ app.get('/check-time', async (req, res) => {
 });
 
 // Start the Express server on port 3001
-app.listen(3001, () => {
-  console.log('Server is running on port 3001');
+app.listen(port, () => {
+  console.log('Server is running on port');
 });
