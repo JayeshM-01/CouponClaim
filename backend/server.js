@@ -3,11 +3,14 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require("cors");
 
+const port = "https://coupon-claimbackend.vercel.app/"
+
 // Create the Express app
 const app = express();
+app.use(express.json());
 
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: 'https://coupon-claimfrontend.vercel.app/',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization'],
@@ -17,11 +20,6 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
 
-
-
-// Middleware to parse JSON payloads and trust proxy headers
-app.use(express.json());
-app.set('trust proxy', true);
 
 // Connect to MongoDB
 mongoose.connect('mongodb+srv://jayashmore278:couponclaim@cluster0.7gysj.mongodb.net/ClaimCoupon?retryWrites=true&w=majority&appName=Cluster0', {
@@ -140,6 +138,6 @@ app.get('/check-time', async (req, res) => {
 });
 
 // Start the Express server on port 3001
-app.listen(3001, () => {
+app.listen(port, () => {
   console.log('Server is running on port 3001');
 });

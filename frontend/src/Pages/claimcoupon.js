@@ -15,6 +15,8 @@ const couponData = [
   { option: 'Free Gift', couponCode: 'COUPON10' }
 ];
 
+const port = "https://coupon-claimbackend.vercel.app/"
+
 const ClaimCoupon = () => {
   const [message, setMessage] = useState('');
   const [remainingTime, setRemainingTime] = useState(0); // in seconds
@@ -26,7 +28,7 @@ const ClaimCoupon = () => {
   // Fetch remaining time from the backend
   const checkRemainingTime = async () => {
     try {
-      const response = await fetch('http://localhost:3001/check-time');
+      const response = await fetch(`${port}check-time`);
       const data = await response.json();
       setRemainingTime(Math.ceil(data.remainingTime));
     } catch (error) {
@@ -39,7 +41,7 @@ const ClaimCoupon = () => {
     // Allow spin only if not spinning and cooldown has expired.
     if (remainingTime > 0 || mustSpin) return;
     try {
-      const response = await fetch('http://localhost:3001/claim-coupon', {
+      const response = await fetch(`${port}claim-coupon`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         // couponId here is a dummy value; backend uses round-robin logic.
