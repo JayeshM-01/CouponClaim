@@ -7,7 +7,7 @@ const cors = require("cors");
 const app = express();
 
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: 'https://coupon-claimfrontend.vercel.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization'],
